@@ -10,7 +10,7 @@ versiones → seguimiento.
 - Git
 - Toolchain Roblox (instalar con `scripts/setup.sh` o manual):
   Rokit + `rojo-rbx/rojo`, `lune-org/lune`, `kampfkarren/selene`,
-  `JohnnyMorganz/StyLua`, `UpliftGames/wally`
+  `JohnnyMorganz/StyLua`, `JohnnyMorganz/luau-lsp`, `UpliftGames/wally`
 - Roblox Studio (Windows/Mac) para lo visual y el playtest.
   En Linux, Studio no corre nativo: desarrolla aquí y sincroniza por git
   a una máquina con Studio.
@@ -19,9 +19,10 @@ versiones → seguimiento.
 
 ```bash
 cd roblox
-bash scripts/setup.sh   # verifica requisitos e indica lo que falta
+bash scripts/setup.sh    # verifica toolchain + descarga defs de tipos (.defs/)
+bash scripts/validate.sh # puerta de calidad: selene + stylua + tipos + tests (exit 0)
 git init && git add -A && git commit -m "chore: scaffold inicial Rojo+opencode"
-rojo serve              # sync en vivo con Studio (abre el place y conecta)
+rojo serve               # sync en vivo con Studio (abre el place y conecta)
 ```
 
 ## Habilitar el MCP de Roblox Studio (Windows/Mac)

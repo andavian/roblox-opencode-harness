@@ -67,7 +67,16 @@ al servidor sin validación.
 
 ## Validación mínima antes de cada sync
 
-1. `selene` (std roblox) sin errores
-2. `stylua --check` limpio
-3. `luau-lsp` / análisis de tipos sin errores
-4. Revisión de seguridad de remotes (ver skill `roblox-dev`)
+Puerta única: `bash scripts/validate.sh` (exit 0). Corre, en orden:
+`ensure_defs` (defs de tipos para luau-lsp) → `selene src/` →
+`stylua --check src/ tests/lune/` → `rojo sourcemap` +
+`luau-lsp analyze` (tipos estrictos con defs de Roblox, `tests/lune` excluido) →
+`lune run tests/lune/run-all.luau`. Cada gate imprime `== ... ==` y ante un
+fallo imprime `FAIL` + sale 1.
+
+Regla lune: solo los módulos puros son lune-testeables — sin `game:`, sin
+`Instance`, sin `task` (Lune no los provee). Hoy solo `LeaderboardConfig`
+cumple; el servidor (`PlayerDataStore`, `LeaderstatsService`, `init.server`)
+se valida con tipos estrictos + playtest en Studio, no con Lune.
+
+Revisión de seguridad de remotes: ver skill `roblox-dev` (bloqueante).

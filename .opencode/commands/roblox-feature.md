@@ -7,15 +7,10 @@ agent: build
 
 **Feature:** $ARGUMENTS
 
-Pipeline corto (sin fase de juego completo):
+Delega el pipeline completo al subagente `@roblox-orquestador` (modo
+`feature`) con la herramienta Task en una sola llamada, pasándole la
+feature de arriba verbatim. No ejecutes fases tú mismo.
 
-1. `@roblox-lector` — mapa del área afectada.
-2. `@roblox-buscador` — APIs/docs necesarias, con fuentes.
-3. `@roblox-planificador` — alcance, archivos exactos, criterios de aceptación.
-4. `@roblox-ejecutor` — implementa según plan.
-5. `@roblox-testeador` — puerta de calidad + prueba de la feature.
-6. `@roblox-revisor` — veredicto. Si RECHAZADO, vuelve al paso 4 (máx 2 rondas).
-7. `@roblox-versiones` — rama `feat/<nombre>`, commits convencionales.
-8. `@roblox-seguimiento` — bitácora y métricas.
-
-Reporta al final: archivos cambiados, veredicto, rama, próximos pasos.
+Espera su reporte final y, si se detuvo en el CHECKPOINT con una pregunta
+pendiente, preséntasela al usuario tal cual. Cierra con su resumen:
+archivos cambiados, veredicto, rama, próximos pasos.

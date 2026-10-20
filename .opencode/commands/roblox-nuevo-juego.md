@@ -7,41 +7,10 @@ agent: build
 
 **Idea:** $ARGUMENTS
 
-Ejecuta el pipeline completo delegando en subagentes, en orden. No saltes
-fases. Si una fase falla, detente y reporta antes de seguir.
+Delega el pipeline completo al subagente `@roblox-orquestador` (modo
+`nuevo-juego`) con la herramienta Task en una sola llamada, pasándole la
+idea de arriba verbatim. No ejecutes fases tú mismo.
 
-## Fase 1 — Lectura
-
-Delega a `@roblox-lector`. Si el repo es scaffold vacío, continúa igual.
-
-## Fase 2 — Búsqueda
-
-Delega a `@roblox-buscador` con: género pedido + APIs que el juego necesitará
-(remotes, DataStores, tipos de assets). Exige fuentes.
-
-## Fase 3 — Planificación
-
-Delega a `@roblox-planificador` con mapa + hallazgos + idea. Exige el flujo
-de 8 pasos de la skill `roblox-game` y criterios de aceptación por fase.
-
-## Fase 4 — Ejecución
-
-Delega a `@roblox-ejecutor` fase por fase del plan.
-
-## Fase 5 — Testeo
-
-Delega a `@roblox-testeador`: puerta de calidad + playtest (MCP si disponible,
-guion manual si no). Máximo 5 intentos por bug.
-
-## Fase 6 — Revisión
-
-Delega a `@roblox-revisor`. Si RECHAZADO: vuelve a Fase 4 con los
-bloqueadores. Solo 2 rondas; a la tercera, re-planifica (Fase 3).
-
-## Fase 7 — Versiones
-
-Delega a `@roblox-versiones` (requiere APROBADO). Sin push sin confirmación.
-
-## Fase 8 — Seguimiento
-
-Delega a `@roblox-seguimiento` y reporta el resumen del ciclo al usuario.
+Espera su reporte final y, si se detuvo en el CHECKPOINT con una pregunta
+pendiente, preséntasela al usuario tal cual. Cierra con su resumen:
+archivos cambiados, veredicto, rama, próximos pasos.

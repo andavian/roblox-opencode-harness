@@ -23,7 +23,13 @@ sincroniza a Studio con Rojo. Studio sigue siendo la herramienta visual
 - Nombres: `init.server.luau`, `init.client.luau`, `*.server.luau`,
   `*.client.luau`, `*.luau` para módulos.
 
-## Pipeline obligatorio (delegar en subagentes)
+## Pipeline obligatorio (orquestado)
+
+Los commands (`/roblox-feature`, `/roblox-nuevo-juego`, `/roblox-debug-loop`)
+delegan en `@roblox-orquestador`, que invoca a los 8 subagentes en orden,
+aplica fast-path en cambios triviales y reintenta el loop revisor→ejecutor
+(máx 2 rondas). Se puede invocar a cada subagente directo con `@` para
+usos puntuales.
 
 1. `roblox-lector` → mapa del repo y lagunas
 2. `roblox-buscador` → docs oficiales + codebase (con fuentes)
@@ -31,7 +37,9 @@ sincroniza a Studio con Rojo. Studio sigue siendo la herramienta visual
 4. `roblox-ejecutor` → implementa
 5. `roblox-testeador` → valida (selene, stylua, luau-lsp; MCP Studio si disponible)
 6. `roblox-revisor` → code review + auditoría de seguridad (bloqueante)
-7. `roblox-versiones` → git (rama por feature, commits convencionales)
+7. `roblox-versiones` → git (rama por feature, commits convencionales).
+   Solo corre tras el CHECKPOINT: el orquestador pide confirmación con la
+   herramienta `question` y sin "commitear" explícito no hay commit.
 8. `roblox-seguimiento` → bitácora en `docs/seguimiento.md`
 
 Ningún código llega a `main` sin pasar por revisor. Ningún RemoteEvent llega

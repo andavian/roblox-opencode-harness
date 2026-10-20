@@ -11,3 +11,8 @@
 # OS / editores
 .DS_Store
 Thumbs.db
+
+# Toolchain local (generados por scripts/validate.sh y scripts/setup.sh)
+# No versionar: se regeneran con `rojo sourcemap` / `ensure_defs`.
+/sourcemap.json
+/.defs/

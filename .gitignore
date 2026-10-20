@@ -1,0 +1,13 @@
+# Rojo / build
+/build/
+*.rbxl
+*.rbxlx
+.rojo/
+
+# Wally (el lock SÍ se versiona)
+/Packages/
+/_Index/
+
+# OS / editores
+.DS_Store
+Thumbs.db

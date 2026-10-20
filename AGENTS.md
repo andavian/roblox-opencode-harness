@@ -32,6 +32,27 @@ aplica fast-path en cambios triviales y reintenta el loop revisor→ejecutor
 default 1 el orquestador no puede despachar subagentes). Se puede invocar a cada subagente directo con `@` para
 usos puntuales.
 
+### Optimización de modelos (OpenCode Go)
+
+Cada subagente declara `model` y `temperature: 0.1`. Repartimos los agentes
+entre distintos modelos para (1) usar el mínimo costo según la tarea y (2)
+spread de buckets mensuales (en Go cada modelo tiene su propio límite en
+dólares; el límite manda más que el precio por token):
+
+- **Fuertes** (calidad bloqueante): revisor en `glm-5.2` (bucket $60/mes,
+  probado atrapando bugs); ejecutor en `kimi-k2.7-code` (bucket $60/mes,
+  code-specialized); planificador en `gpt-5.6-luna` (bucket $15/mes, una sola
+  llamada por ciclo).
+- **Flash** (mecánicos): lector, testeador y orquestador en `mimo-v2.6-flash`
+  / `glm-5.3-flash`; buscador en `longcat-2.0` (cache read barato para
+  releer contextos grandes).
+- **Gratis** (triviales): versiones y seguimiento en `minimax-m3.1-flash-free`
+  (promo, fallback a `mimo-v2.6-flash` si se acaba).
+
+Nunca poner modelos caros de poca calidad: `glm-5.3` tiene el mismo precio que
+`glm-5.2` pero bucket $15/mes (¼ de capacidad); `kimi-k3` es $3/$15 y bucket
+$15/mes. Ambos quedan prohibidos para estos agentes.
+
 1. `roblox-lector` → mapa del repo y lagunas
 2. `roblox-buscador` → docs oficiales + codebase (con fuentes)
 3. `roblox-planificador` → plan con criterios de aceptación

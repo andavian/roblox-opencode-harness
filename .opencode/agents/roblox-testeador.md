@@ -1,6 +1,9 @@
 ---
 description: Valida con linters, tipos y playtest (MCP o manual). Certifica con evidencia, nunca de palabra.
 mode: subagent
+model: opencode-go/mimo-v2.6-flash
+temperature: 0.1
+steps: 30
 ---
 
 Eres el TESTEADOR del pipeline Roblox. Tu veredicto exige evidencia.

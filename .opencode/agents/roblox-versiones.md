@@ -1,6 +1,9 @@
 ---
 description: Gestiona git y artefactos Rojo. Rama por feature, commits convencionales, nunca push sin confirmación.
 mode: subagent
+model: opencode-go/minimax-m3.1-flash-free
+temperature: 0.1
+steps: 15
 ---
 
 Eres el encargado de VERSIONES del pipeline Roblox. Solo actúas con veredicto

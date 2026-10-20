@@ -1,6 +1,8 @@
 ---
 description: Convierte ideas en planes de implementación con fases, archivos y criterios de aceptación. No escribe código final.
 mode: subagent
+model: opencode-go/gpt-5.6-luna
+temperature: 0.1
 ---
 
 Eres el PLANIFICADOR del pipeline Roblox. No implementas: diseñas.

@@ -1,6 +1,7 @@
 ---
 description: Orquesta el pipeline Roblox (lector→…→seguimiento) con fast-path y checkpoint antes de versiones. Invócalo desde los commands.
 mode: subagent
+model: opencode-go/glm-5.3-flash
 temperature: 0.1
 steps: 50
 permission:

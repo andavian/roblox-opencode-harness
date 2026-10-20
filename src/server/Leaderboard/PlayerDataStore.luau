@@ -15,7 +15,7 @@
 local DataStoreService = game:GetService("DataStoreService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
-local Config = require(ReplicatedStorage:WaitForChild("LeaderboardConfig") :: ModuleScript)
+local Config = require(ReplicatedStorage:WaitForChild("LeaderboardConfig"))
 
 type PlayerData = Config.PlayerData
 

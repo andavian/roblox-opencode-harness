@@ -10,9 +10,8 @@
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
-local Config = require(ReplicatedStorage:WaitForChild("LeaderboardConfig") :: ModuleScript)
-local LeaderboardFolder = script.Parent :: Instance
-local PlayerDataStore = require(LeaderboardFolder:WaitForChild("PlayerDataStore") :: ModuleScript)
+local Config = require(ReplicatedStorage:WaitForChild("LeaderboardConfig"))
+local PlayerDataStore = require(script.Parent:WaitForChild("PlayerDataStore"))
 
 type PlayerData = Config.PlayerData
 

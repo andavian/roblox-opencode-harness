@@ -11,9 +11,9 @@
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
-local Config = require(ReplicatedStorage:WaitForChild("LeaderboardConfig") :: ModuleScript)
-local PlayerDataStore = require(script:WaitForChild("PlayerDataStore") :: ModuleScript)
-local LeaderstatsService = require(script:WaitForChild("LeaderstatsService") :: ModuleScript)
+local Config = require(ReplicatedStorage:WaitForChild("LeaderboardConfig"))
+local PlayerDataStore = require(script:WaitForChild("PlayerDataStore"))
+local LeaderstatsService = require(script:WaitForChild("LeaderstatsService"))
 
 local BIND_TO_CLOSE_BUDGET_SECONDS = 25
 
@@ -43,7 +43,7 @@ end
 
 Players.PlayerAdded:Connect(function(player: Player)
     task.spawn(function()
-        local ok, err = pcall(LoadAndSetup, player)
+        local ok: boolean, err: any = pcall(LoadAndSetup, player)
         if not ok then
             warn(("Leaderboard: load+setup falló para %s: %s"):format(player.Name, tostring(err)))
         end
@@ -62,7 +62,7 @@ end)
 -- Jugadores ya presentes (ej. Play Solo en Studio donde Added ya disparó).
 for _, player in Players:GetPlayers() do
     task.spawn(function()
-        local ok, err = pcall(LoadAndSetup, player)
+        local ok: boolean, err: any = pcall(LoadAndSetup, player)
         if not ok then
             warn(("Leaderboard: load+setup falló para %s: %s"):format(player.Name, tostring(err)))
         end

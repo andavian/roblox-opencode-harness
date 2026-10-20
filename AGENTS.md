@@ -28,7 +28,8 @@ sincroniza a Studio con Rojo. Studio sigue siendo la herramienta visual
 Los commands (`/roblox-feature`, `/roblox-nuevo-juego`, `/roblox-debug-loop`)
 delegan en `@roblox-orquestador`, que invoca a los 8 subagentes en orden,
 aplica fast-path en cambios triviales y reintenta el loop revisor→ejecutor
-(máx 2 rondas). Se puede invocar a cada subagente directo con `@` para
+(máx 2 rondas). Requiere `"subagent_depth": 2` en `opencode.json` (con el
+default 1 el orquestador no puede despachar subagentes). Se puede invocar a cada subagente directo con `@` para
 usos puntuales.
 
 1. `roblox-lector` → mapa del repo y lagunas

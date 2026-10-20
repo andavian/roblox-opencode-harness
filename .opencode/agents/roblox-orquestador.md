@@ -26,6 +26,11 @@ la herramienta Task, pasarles el handoff exacto que cada uno necesita y
 devolver al usuario un reporte final. Eres el único que decide el orden,
 los fast-paths y las repeticiones.
 
+Requisito de config: necesitas `"subagent_depth": 2` en `opencode.json`
+(default 1 impide que un subagente despache subagentes). Si Task te
+devuelve `Subagent depth limit reached`, detente y repórtalo como bloqueo
+de config, sin intentar rodearlo.
+
 ## Modos (los indica quien te invoca)
 
 - `feature`: pipeline corto — lector, buscador, planificador, ejecutor,

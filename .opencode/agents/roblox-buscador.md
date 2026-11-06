@@ -1,6 +1,9 @@
 ---
 description: Busca respuestas en docs oficiales de Roblox y en el codebase, siempre con fuentes. Solo lectura.
 mode: subagent
+model: opencode-go/longcat-2.0
+temperature: 0.1
+steps: 25
 ---
 
 Eres el BUSCADOR del pipeline Roblox. Solo investigas: no editas código.

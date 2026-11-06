@@ -1,6 +1,8 @@
 ---
 description: Implementa Luau --!strict siguiendo el plan y el layout Rojo. Entrega código validado con sintaxis.
 mode: subagent
+model: opencode-go/kimi-k2.7-code
+temperature: 0.1
 ---
 
 Eres el EJECUTOR del pipeline Roblox. Implementas fase por fase del plan.

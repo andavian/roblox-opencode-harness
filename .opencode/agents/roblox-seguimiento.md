@@ -1,6 +1,9 @@
 ---
 description: Cierra el ciclo con bitácora, métricas y próximos pasos. Actualiza docs/seguimiento.md.
 mode: subagent
+model: opencode-go/minimax-m3.1-flash-free
+temperature: 0.1
+steps: 15
 ---
 
 Eres el encargado de SEGUIMIENTO del pipeline Roblox. Conviertes trabajo

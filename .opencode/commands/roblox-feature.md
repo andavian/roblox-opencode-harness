@@ -7,6 +7,12 @@ agent: build
 
 **Feature:** $ARGUMENTS
 
+> **Guard de harness:** si existe `scripts/new-game.sh`, estás en el harness
+> generador de juegos — no implementes features de juego ni debug aquí.
+> Genera un juego con `bash scripts/new-game.sh <nombre>` o cambia al
+> directorio del juego; solo continúa con el orquestador si este marcador no
+> existe.
+
 Delega el pipeline completo al subagente `@roblox-orquestador` (modo
 `feature`) con la herramienta Task en una sola llamada, pasándole la
 feature de arriba verbatim. No ejecutes fases tú mismo.

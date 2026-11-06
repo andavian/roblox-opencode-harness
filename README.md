@@ -36,6 +36,36 @@ rojo serve               # sync en vivo con Studio (abre el place y conecta)
      (ver plugin oficial `Roblox/roblox-studio-agent-plugin`).
 3. Reiniciar opencode y verificar con `opencode mcp list`.
 
+## Demo del harness
+
+El código en `src/` es un **demo de referencia** (leaderboard con DataStore)
+para validar el harness, no una plantilla de juego. No lo copies a mano para
+nuevos juegos.
+
+## Generar un nuevo juego
+
+Desde este repositorio (harness):
+
+```bash
+bash scripts/new-game.sh <nombre>
+```
+
+Esto crea un proyecto autónomo en `../<nombre>/`. Abre opencode **dentro del
+nuevo directorio**:
+
+```bash
+cd ../<nombre> && opencode
+/roblox-nuevo-juego "<idea del juego>"
+```
+
+Para sincronizar mejoras del harness más tarde:
+
+```bash
+bash scripts/sync-harness.sh ../<nombre>
+```
+
+Ambos scripts usan paths relativos al directorio del harness.
+
 ## Uso
 
 - `/roblox-nuevo-juego "un tycoon de pizzería con 3 niveles"` — pipeline completo

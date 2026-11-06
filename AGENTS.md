@@ -32,6 +32,32 @@ aplica fast-path en cambios triviales y reintenta el loop revisor→ejecutor
 default 1 el orquestador no puede despachar subagentes). Se puede invocar a cada subagente directo con `@` para
 usos puntuales.
 
+## Harness vs juegos
+
+Este repositorio es el **harness**: una plantilla generadora de proyectos de
+juego Roblox, no un juego jugable. Cada juego concreto vive en un directorio
+hermano (`../<nombre>/`) generado por `scripts/new-game.sh`.
+
+Flujo:
+
+1. En el harness: `bash scripts/new-game.sh <nombre> [--github] [--no-push]`.
+2. `cd ../<nombre>` y abre opencode dentro del proyecto generado.
+3. Dentro del juego: `/roblox-nuevo-juego "<idea>"` para ejecutar el pipeline.
+
+Marcador: `scripts/new-game.sh` solo existe en el harness. Si un command lo
+detecta, debe generar el juego, no implementar features.
+
+`scripts/sync-harness.sh <game-dir>` propaga actualizaciones del harness al
+juego:
+
+- Propaga: `.opencode/**` (tracked), `scripts/setup.sh`,
+  `scripts/validate.sh`, `selene.toml`, `stylua.toml` y
+  `.opencode/.gitignore`.
+- Protege: `src/`, `docs/`, `default.project.json`, `README.md`,
+  `rokit.toml`; nunca borra archivos extra del juego.
+
+Tras cambiar commands/skills en `.opencode/`: salir y reiniciar opencode.
+
 ### Optimización de modelos (OpenCode Go)
 
 Cada subagente declara `model` y `temperature: 0.1`. Repartimos los agentes
